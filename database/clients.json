@@ -1,1 +1,14 @@
-{}
+{
+    "users": [{
+        "id": "AaBF5yyGxK8j09",
+        "name": "Rubens Kaiserman",
+        "email": "rubskaiserman@gmail.com",
+        "password": "batatinha123"
+    }],
+    "events": [{
+        "userId": "AaBF5yyGxK8j09",
+        "date": "2022-11-15",
+        "title": "YES SCIENCE",
+        "time": "12:00"
+    }]
+}

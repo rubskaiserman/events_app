@@ -1,4 +1,4 @@
-const axios = require('axios')
+const axios = require('axios');
 
 test('signup', async ()=> {
     const data = JSON.stringify({
@@ -17,5 +17,5 @@ test('signup', async ()=> {
     };
 
     const response = await axios(config)
-    expect(JSON.stringify(response.data)).toBe(data)
+    expect(response.data).toBe("success")
 });

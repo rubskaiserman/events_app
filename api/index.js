@@ -6,13 +6,14 @@ const port = 3000
 
 app.use(express.json()); 
 
-app.post('/signup', (req, res)=> {
+app.post('/signup', async (req, res)=> {
     user = {
         email: req.body.email,
         username: req.body.username,
-        password: req.body.password  
+        password: req.body.password
     }
-    res.send(user)
+    result = database.saveUser(user)
+    res.send(result)
 });
 
 app.post('/login', (req, res)=> {
