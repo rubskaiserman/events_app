@@ -1,5 +1,6 @@
 const express = require('express')
 const database = require('./database.js')
+const password = require('./password.js')
 
 const app = express()
 const port = 3000
@@ -8,11 +9,12 @@ app.use(express.json());
 
 app.post('/signup', async (req, res)=> {
     user = {
+        id: req.body.email,
         email: req.body.email,
-        username: req.body.username,
-        password: req.body.password
+        name: req.body.name,
+        password: await password.encripter(req.body.password)
     }
-    result = database.saveUser(user)
+    result = await database.saveUser(user)
     res.send(result)
 });
 

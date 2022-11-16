@@ -1,9 +1,11 @@
 const axios = require('axios');
+const password = require('./password.js')
+const bcrypt = require('bcrypt')
 
 test('signup', async ()=> {
     const data = JSON.stringify({
         'email': 'rubskaiserman@gmail.com',
-        'username': 'rubskaiserman',
+        'name': 'Rubens Kaiserman',
         'password': 'batatinha'
     });
 
@@ -16,6 +18,19 @@ test('signup', async ()=> {
     data: data
     };
 
-    const response = await axios(config)
-    expect(response.data).toBe("success")
+    let response;
+    response = await axios(config)
+    expect(response.data).toBe("Usuário cadastrado com sucesso")
+    response = await axios(config);
+    expect(response.data).toBe("Erro. Usuário já cadastrado.")
+});
+
+test('password.js', async ()=> {
+    plainTextPassword = 'batatinha123';
+    hashedPassword = await password.encripter(plainTextPassword);
+
+    passwordTrueCheckage = await password.decripter(plainTextPassword, hashedPassword);
+    passwordFalseCheckage = await password.decripter('batatinha1234', hashedPassword);
+    expect(passwordTrueCheckage).toBe(true)
+    expect(passwordFalseCheckage).toBe(false)
 });
